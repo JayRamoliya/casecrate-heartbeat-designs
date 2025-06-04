@@ -5,13 +5,13 @@
 
 @layer base {
   :root {
-    --background: 255 255 255;
+    --background: 248 250 252;
     --foreground: 15 23 42;
     
     --card: 255 255 255;
     --card-foreground: 15 23 42;
     
-    --primary: 59 130 246;
+    --primary: 30 58 138;
     --primary-foreground: 255 255 255;
     
     --secondary: 241 245 249;
@@ -20,12 +20,12 @@
     --muted: 248 250 252;
     --muted-foreground: 100 116 139;
     
-    --accent: 239 246 255;
-    --accent-foreground: 29 78 216;
+    --accent: 219 234 254;
+    --accent-foreground: 30 58 138;
     
     --border: 226 232 240;
     --input: 226 232 240;
-    --ring: 59 130 246;
+    --ring: 30 58 138;
     
     --radius: 0.75rem;
   }
@@ -37,7 +37,7 @@
   }
   
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-slate-50 text-foreground font-sans antialiased;
   }
   
   html {
@@ -47,18 +47,34 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+    @apply bg-white/95 backdrop-blur-sm border border-blue-100/50 shadow-xl;
   }
   
-  .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  .luxury-gradient {
+    background: linear-gradient(135deg, #1e40af 0%, #3730a3 25%, #1e3a8a 50%, #312e81 75%, #1e1b4b 100%);
+  }
+  
+  .premium-gradient {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 25%, #93c5fd 50%, #60a5fa 75%, #3b82f6 100%);
   }
   
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 border border-blue-600;
   }
   
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply bg-white hover:bg-blue-50 text-blue-800 border-2 border-blue-200 hover:border-blue-300 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .premium-card {
+    @apply bg-white border border-blue-100 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:border-blue-200;
+  }
+  
+  .luxury-text {
+    @apply bg-gradient-to-r from-blue-800 via-blue-700 to-blue-900 bg-clip-text text-transparent;
+  }
+  
+  .gold-accent {
+    @apply text-amber-600;
   }
 }

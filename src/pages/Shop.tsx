@@ -40,20 +40,20 @@ const Shop = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Shop iPhone Cases</h1>
-          <p className="text-gray-600">Discover our complete collection of premium iPhone cases</p>
+        <div className="mb-12">
+          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Shop iPhone Cases</h1>
+          <p className="text-xl text-gray-600">Discover our complete collection of premium iPhone cases</p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Sidebar Filters */}
           <div className="w-full lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
               <div className="flex items-center justify-between mb-4 lg:hidden">
                 <h3 className="text-lg font-semibold">Filters</h3>
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className="p-2 text-gray-600 hover:text-gray-900"
+                  className="p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <Filter size={20} />
                 </button>
@@ -64,13 +64,13 @@ const Shop = () => {
                 
                 {/* iPhone Model Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
                     iPhone Model
                   </label>
                   <select
                     value={selectedModel}
                     onChange={(e) => setSelectedModel(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   >
                     <option value="">All Models</option>
                     {models.map(model => (
@@ -81,13 +81,13 @@ const Shop = () => {
 
                 {/* Color Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
                     Color
                   </label>
                   <select
                     value={selectedColor}
                     onChange={(e) => setSelectedColor(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   >
                     <option value="">All Colors</option>
                     {colors.map(color => (
@@ -98,13 +98,13 @@ const Shop = () => {
 
                 {/* Material Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
                     Material
                   </label>
                   <select
                     value={selectedMaterial}
                     onChange={(e) => setSelectedMaterial(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   >
                     <option value="">All Materials</option>
                     {materials.map(material => (
@@ -117,7 +117,7 @@ const Shop = () => {
                 {(selectedModel || selectedColor || selectedMaterial) && (
                   <button
                     onClick={clearFilters}
-                    className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors"
+                    className="w-full btn-secondary"
                   >
                     Clear Filters
                   </button>
@@ -128,24 +128,24 @@ const Shop = () => {
 
           {/* Products Grid */}
           <div className="flex-1">
-            <div className="mb-4 flex justify-between items-center">
-              <p className="text-gray-600">
+            <div className="mb-6 flex justify-between items-center">
+              <p className="text-gray-600 text-lg">
                 Showing {filteredProducts.length} of {products.length} products
               </p>
             </div>
 
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">No products found matching your filters.</p>
+              <div className="text-center py-16">
+                <p className="text-gray-500 text-xl mb-4">No products found matching your filters.</p>
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-blue-600 hover:text-blue-700 font-medium"
+                  className="btn-primary"
                 >
                   Clear all filters
                 </button>

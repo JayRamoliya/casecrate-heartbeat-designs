@@ -46,30 +46,30 @@ const ProductCard = ({ product, showOrderButton = true }: ProductCardProps) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 overflow-hidden hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+    <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group">
       <Link to={`/product/${product.id}`}>
         <div className="aspect-square overflow-hidden">
           <img 
             src={product.image} 
             alt={product.name}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         </div>
       </Link>
       
-      <div className="p-4">
+      <div className="p-5">
         <div className="flex justify-between items-start mb-2">
           <Link to={`/product/${product.id}`}>
-            <h3 className="font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <h3 className="font-semibold text-gray-900 hover:text-blue-600 transition-colors text-lg">
               {product.name}
             </h3>
           </Link>
           <button
             onClick={handleLike}
-            className={`flex items-center space-x-1 px-2 py-1 rounded-full transition-colors ${
+            className={`flex items-center space-x-1 px-2 py-1 rounded-full transition-all duration-200 ${
               isLiked 
-                ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
-                : 'text-gray-400 dark:text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
+                ? 'text-red-500 bg-red-50 scale-110' 
+                : 'text-gray-400 hover:text-red-500 hover:bg-red-50 hover:scale-110'
             }`}
           >
             <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} />
@@ -77,18 +77,18 @@ const ProductCard = ({ product, showOrderButton = true }: ProductCardProps) => {
           </button>
         </div>
         
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+        <p className="text-sm text-gray-500 mb-3">
           Compatible with {product.model}
         </p>
         
-        <p className="text-lg font-bold text-gray-900 dark:text-white mb-3">
-          ${product.price}
+        <p className="text-xl font-bold text-gray-900 mb-4">
+          ₹{(product.price * 83).toLocaleString('en-IN')}
         </p>
         
         {showOrderButton && (
           <Link 
             to={`/order?product=${product.id}`}
-            className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors text-center block font-medium"
+            className="w-full btn-primary text-center block"
           >
             Order Now
           </Link>

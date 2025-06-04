@@ -46,7 +46,7 @@ const ProductCard = ({ product, showOrderButton = true }: ProductCardProps) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/20 overflow-hidden hover:shadow-lg dark:hover:shadow-gray-900/40 transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
       <Link to={`/product/${product.id}`}>
         <div className="aspect-square overflow-hidden">
           <img 
@@ -60,7 +60,7 @@ const ProductCard = ({ product, showOrderButton = true }: ProductCardProps) => {
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
           <Link to={`/product/${product.id}`}>
-            <h3 className="font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+            <h3 className="font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               {product.name}
             </h3>
           </Link>
@@ -68,8 +68,8 @@ const ProductCard = ({ product, showOrderButton = true }: ProductCardProps) => {
             onClick={handleLike}
             className={`flex items-center space-x-1 px-2 py-1 rounded-full transition-colors ${
               isLiked 
-                ? 'text-red-500 bg-red-50' 
-                : 'text-gray-400 hover:text-red-500 hover:bg-red-50'
+                ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
+                : 'text-gray-400 dark:text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
             }`}
           >
             <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} />
@@ -77,18 +77,18 @@ const ProductCard = ({ product, showOrderButton = true }: ProductCardProps) => {
           </button>
         </div>
         
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
           Compatible with {product.model}
         </p>
         
-        <p className="text-lg font-bold text-gray-900 mb-3">
+        <p className="text-lg font-bold text-gray-900 dark:text-white mb-3">
           ${product.price}
         </p>
         
         {showOrderButton && (
           <Link 
             to={`/order?product=${product.id}`}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-center block font-medium"
+            className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-colors text-center block font-medium"
           >
             Order Now
           </Link>
